@@ -15,7 +15,30 @@ function generatePassword(){
   let uppercase = confirm("Would you like uppercase letters?");
   let lowercase = confirm("Would you like lowercase letters?");
   let numbers = confirm("Would you like numbers?");
-  let specialCharacters = ("Would you like special characters?");
+  let specialCharacters = confirm("Would you like special characters?");
+
+  let uppercaseChars = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  let lowercaseChars = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  let numberChars = ["0","1","2","3","4","5","6","7","8","9"];
+  let specialChars = ["!","@","#","$","%","^","&","*","(",")","+","=","-","<",">","?","/",";",":","[","]","{","}","~","`","|",",","."];
+
+  let passwordChars = [];
+
+  if (uppercase){
+    passwordChars = uppercaseChars;
+  }
+
+  if (lowercase){
+    passwordChars = passwordChars.concat(lowercaseChars);
+  }
+
+  if (numbers){
+    passwordChars = passwordChars.concat(numberChars);
+  }
+
+  if (specialCharacters){
+    passwordChars = passwordChars.concat(specialChars);
+  } 
 
   
 }
