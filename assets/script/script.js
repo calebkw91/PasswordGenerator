@@ -21,6 +21,7 @@ function generatePassword()
   let lowercase = false;
   let numbers = false;
   let specialCharacters = false;
+  let passwordNotValidated = true;
 
   while(passwordLengthSelected)
   {
@@ -75,11 +76,80 @@ function generatePassword()
     passwordChars = passwordChars.concat(specialChars);
   } 
 
-  for (i = 0; i < length; i++)
-  {
-    let passwordCharIndex = Math.floor(Math.random(i) * passwordChars.length)
+  let uppercaseVerified = !uppercase;
+  let lowercaseVerified = !lowercase;
+  let numbersVerified = !numbers;
+  let specialCharsVerified = !specialCharacters;
 
-    finalPassword = finalPassword.concat(passwordChars[passwordCharIndex]);
+  while (passwordNotValidated)
+  {
+    console.log(uppercaseVerified);
+    console.log(lowercaseVerified);
+    console.log(numbersVerified);
+    console.log(specialCharsVerified);
+
+    for (let i = 0; i < length; i++)
+    {
+      let passwordCharIndex = Math.floor(Math.random(i) * passwordChars.length)
+  
+      finalPassword = finalPassword.concat(passwordChars[passwordCharIndex]);
+    }
+
+    if (!uppercaseVerified)
+    {
+      for (let i = 0; i < finalPassword.length; i++)
+      {
+        let character = finalPassword.charAt(i);
+        if (character === character.toUpperCase())
+        {
+          uppercaseVerified = true;
+        }
+      }
+    }
+
+    if (!lowercaseVerified)
+    {
+      for (let i = 0; i < finalPassword.length; i++)
+      {
+        let character = finalPassword.charAt(i);
+        if (character === character.toLowerCase())
+        {
+          lowercaseVerified = true;
+        }
+      }
+    }
+
+    if (!numbersVerified)
+    {
+      for (let i = 0; i < finalPassword.length; i++)
+      {
+        let character = finalPassword.charAt(i);
+        if (!isNaN(character))
+        {
+          numbersVerified = true;
+        }
+      }
+    }
+
+    if (!specialCharsVerified)
+    {
+      for (let i = 0; i < finalPassword.length; i++)
+      {
+        let character = finalPassword.charAt(i);
+        for (let j = 0; j < specialChars.length; j++)
+        {
+          if (character === specialChars[j])
+          {
+            specialCharsVerified = true;
+          }
+        }
+      }
+    }
+
+    if (uppercaseVerified && lowercaseVerified && numbersVerified && specialCharsVerified)
+    {
+      passwordNotValidated = false;
+    }
   }
 
   return finalPassword;
