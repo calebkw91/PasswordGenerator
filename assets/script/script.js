@@ -23,6 +23,7 @@ function generatePassword()
   let specialCharacters = false;
   let passwordNotValidated = true;
 
+  //Verifies password is an appropriate length, and prompts user if otherwise
   while(passwordLengthSelected)
   {
     var length = prompt("Choose a password length between 8-128");
@@ -33,6 +34,7 @@ function generatePassword()
     }
   }
 
+  //Verifies user has selected at least one parameter
   while(passwordParameterSelected)
   {
     uppercase = confirm("Would you like uppercase letters?");
@@ -49,6 +51,7 @@ function generatePassword()
     }
   }
 
+  //Define all possible characters
   let uppercaseChars = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   let lowercaseChars = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   let numberChars = ["0","1","2","3","4","5","6","7","8","9"];
@@ -56,6 +59,7 @@ function generatePassword()
 
   let passwordChars = [];
 
+  //If user has selected a given character, add that character type to the pool of possible password characters
   if (uppercase)
   {
     passwordChars = uppercaseChars;
@@ -81,6 +85,7 @@ function generatePassword()
   let numbersVerified = !numbers;
   let specialCharsVerified = !specialCharacters;
 
+  //Regenerate password until it meets the password character requirements
   while (passwordNotValidated)
   {
     console.log(uppercaseVerified);
